@@ -1,3 +1,619 @@
-how do I save this locally? 
-committing changes = creating checkpoint - commit frequently
-    
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sammy Rae & The Friends — Fan Page</title>
+  <meta name="description" content="A clean, modern Gen Z fan page for Sammy Rae & The Friends." />
+
+  <!-- Fonts (safe defaults). Swap for your favorites if you want. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* “Sammy Rae colors” vibe: bright + warm + playful */
+      --blue: #4AC8F5;     /* electric sky */
+      --coral: #FF6F61;    /* sunset coral */
+      --yellow:#FFDD57;    /* warm pop */
+      --ink:  #0B0F19;     /* soft black */
+      --paper:#FFFFFF;
+
+      --muted: rgba(11,15,25,.64);
+      --card: rgba(255,255,255,.78);
+      --stroke: rgba(11,15,25,.10);
+
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+
+      --shadow: 0 18px 55px rgba(11, 15, 25, .12);
+      --shadow-soft: 0 10px 30px rgba(11, 15, 25, .10);
+
+      --max: 1100px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 10% 10%, rgba(74,200,245,.28), transparent 60%),
+        radial-gradient(900px 600px at 90% 15%, rgba(255,111,97,.22), transparent 55%),
+        radial-gradient(1000px 700px at 40% 95%, rgba(255,221,87,.22), transparent 55%),
+        linear-gradient(180deg, #fbfbff 0%, #ffffff 45%, #faf9ff 100%);
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
+
+    .wrap{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* Top nav */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,.72);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 12px;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-family: "Space Grotesk", Inter, sans-serif;
+    }
+    .logo{
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--coral), var(--yellow));
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(11,15,25,.08);
+    }
+    .navlinks{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-weight: 600;
+      color: rgba(11,15,25,.72);
+      font-size: 14px;
+    }
+    .chip{
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.6);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .chip:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(11,15,25,.10);
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 44px 0 22px;
+    }
+    .heroGrid{
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .heroCard{
+      position: relative;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.60));
+      box-shadow: var(--shadow);
+      padding: 26px;
+      overflow: hidden;
+    }
+    .heroCard:before{
+      content:"";
+      position: absolute;
+      inset: -120px -140px auto auto;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle at 30% 30%, rgba(74,200,245,.65), transparent 55%),
+                  radial-gradient(circle at 70% 70%, rgba(255,111,97,.55), transparent 55%);
+      filter: blur(1px);
+      transform: rotate(14deg);
+      opacity: .9;
+      pointer-events: none;
+    }
+    .heroTitle{
+      margin: 0;
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+    .heroTitle span{
+      background: linear-gradient(90deg, var(--blue), var(--coral), var(--yellow));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sub{
+      margin: 12px 0 0;
+      font-size: 16px;
+      line-height: 1.55;
+      color: rgba(11,15,25,.74);
+      max-width: 62ch;
+    }
+    .ctaRow{
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,15,25,.12);
+      background: rgba(255,255,255,.66);
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      box-shadow: 0 10px 24px rgba(11,15,25,.10);
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      text-decoration: none;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 14px 36px rgba(11,15,25,.14);
+    }
+    .btnPrimary{
+      background: linear-gradient(135deg, rgba(74,200,245,.95), rgba(255,111,97,.92));
+      color: #071018;
+      border: 1px solid rgba(11,15,25,.10);
+    }
+    .btnPrimary:hover{
+      background: linear-gradient(135deg, rgba(74,200,245,1), rgba(255,111,97,1));
+    }
+    .tiny{
+      font-size: 12px;
+      color: rgba(11,15,25,.56);
+    }
+
+    .sideCard{
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      overflow: hidden;
+      position: relative;
+    }
+    .tag{
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(11,15,25,.64);
+    }
+    .tagDot{
+      width: 10px; height: 10px; border-radius: 99px;
+      background: linear-gradient(135deg, var(--yellow), var(--coral));
+      box-shadow: 0 8px 18px rgba(255,111,97,.18);
+    }
+    .newsTitle{
+      font-family: "Space Grotesk", Inter, sans-serif;
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .newsBody{
+      margin: 0;
+      color: rgba(11,15,25,.72);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .newsMeta{
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .pill{
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(11,15,25,.10);
+      background: rgba(255,255,255,.6);
+    }
+
+    /* Sections */
+    section{ padding: 18px 0; }
+    .sectionTitle{
+      margin: 0 0 10px;
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .grid3{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card{
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow-soft);
+      padding: 16px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 50px rgba(11,15,25,.14);
+    }
+
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+    .card p{
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(11,15,25,.70);
+    }
+    .emoji{
+      font-size: 18px;
+      margin-right: 8px;
+    }
+
+    /* Playlist */
+    .playlist{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .track{
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(11,15,25,.10);
+      background: rgba(255,255,255,.60);
+    }
+    .badge{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      background: linear-gradient(135deg, rgba(74,200,245,.95), rgba(255,221,87,.95));
+      border: 1px solid rgba(11,15,25,.10);
+      box-shadow: 0 12px 26px rgba(11,15,25,.10);
+    }
+    .track strong{ display: block; }
+    .track small{ color: rgba(11,15,25,.60); }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 34px;
+      color: rgba(11,15,25,.62);
+      font-size: 13px;
+    }
+    .footerCard{
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.64);
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+    }
+    .formRow{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    input[type="email"]{
+      flex: 1 1 240px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,15,25,.14);
+      background: rgba(255,255,255,.82);
+      font: inherit;
+      outline: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .playlist{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            Sammy Rae &amp; The Friends<br>
+            <span class="tiny">fan page (unofficial) ✨</span>
+          </div>
+        </div>
+
+        <nav class="navlinks" aria-label="Primary">
+          <a class="chip" href="#about">About</a>
+          <a class="chip" href="#news">News</a>
+          <a class="chip" href="#tour">Tour</a>
+          <a class="chip" href="#music">Music</a>
+          <a class="chip" href="#phriends">Phriends</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <div class="wrap hero">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <h1 class="heroTitle">
+            A little corner of the internet for
+            <span>Sammy Rae &amp; The Friends</span>
+          </h1>
+          <p class="sub">
+            Big joy. Bigger vocals. Band energy that feels like group-chat chaos (but in the best way).
+            This is a clean, Gen-Z-friendly fan hub for tour hype, fave tracks, and “did you SEE that live clip??” moments.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn btnPrimary" href="https://www.sammyrae.com/" target="_blank" rel="noopener">
+              🌈 Official site
+            </a>
+            <a class="btn" href="https://www.sammyrae.com/gigs-hangs" target="_blank" rel="noopener">
+              🎟️ Tour dates
+            </a>
+            <a class="btn" href="https://open.spotify.com/artist/7g0WkEBzpqkqO5AOxXti2L" target="_blank" rel="noopener">
+              🎧 Spotify
+            </a>
+            <span class="tiny">Tip: swap links/sections to match your vision.</span>
+          </div>
+        </div>
+
+        <!-- NEWS SIDECARD -->
+        <aside class="sideCard" id="news" aria-label="Recent news">
+          <div class="tag"><span class="tagDot" aria-hidden="true"></span> recent news</div>
+          <h2 class="newsTitle">What’s new lately 👀</h2>
+          <p class="newsBody">
+            As of early <strong>January 2026</strong>, the band’s team has been teasing that <em>2026 is going to be a jam-packed year</em>
+            with more to reveal soon. They’re also booked for <strong>Levitate Music &amp; Arts Festival</strong> in Marshfield, MA
+            on <strong>July 18, 2026</strong>. And if you missed it: their covers record
+            <strong>“Songs We Wish We Wrote”</strong> dropped in <strong>2025</strong> (pure serotonin).
+          </p>
+          <div class="newsMeta">
+            <span class="pill">📅 Updated: Jan 2026</span>
+            <span class="pill">🪩 Festival: Levitate 2026</span>
+            <span class="pill">💿 Covers: 2025 release</span>
+          </div>
+          <p class="tiny" style="margin: 0;">
+            (This is a fan summary. Always check official channels for final details.)
+          </p>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <h2 class="sectionTitle">About the band</h2>
+        <div class="grid3">
+          <div class="card">
+            <h3><span class="emoji" aria-hidden="true">🎤</span>Sound</h3>
+            <p>
+              Genre-blend done right: pop-soul + jazz sparkle + rock punch. The vibe is “everyone’s invited,”
+              and the live show is basically cardio.
+            </p>
+          </div>
+          <div class="card">
+            <h3><span class="emoji" aria-hidden="true">🤝</span>Energy</h3>
+            <p>
+              It’s not just a band — it’s a community. If you’ve ever left a concert feeling like you made 20 new friends,
+              you get it.
+            </p>
+          </div>
+          <div class="card">
+            <h3><span class="emoji" aria-hidden="true">✨</span>Core aesthetic</h3>
+            <p>
+              Bright, warm, and modern: electric blues, sunset corals, and sunshine yellow — clean layout + playful accents,
+              like stickers on a minimalist laptop.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOUR -->
+    <section id="tour">
+      <div class="wrap">
+        <h2 class="sectionTitle">Tour &amp; hangs</h2>
+        <div class="card">
+          <h3 style="margin-top:0;">Next highlighted date</h3>
+          <p style="margin:0 0 10px;">
+            <strong>Levitate Music &amp; Arts Festival</strong> — Marshfield, MA — <strong>July 18, 2026</strong>
+          </p>
+          <div class="ctaRow" style="margin-top: 0;">
+            <a class="btn btnPrimary" href="https://www.sammyrae.com/gigs-hangs" target="_blank" rel="noopener">See official tour list</a>
+            <a class="btn" href="https://www.ticketmaster.com/sammy-rae-the-friends-tickets/artist/2791075" target="_blank" rel="noopener">Tickets (where available)</a>
+          </div>
+          <p class="tiny" style="margin: 10px 0 0;">Pro tip: embed a Bandsintown widget here if you want auto-updating dates.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section id="music">
+      <div class="wrap">
+        <h2 class="sectionTitle">Starter pack playlist</h2>
+
+        <div class="playlist">
+          <div class="card">
+            <h3 style="margin-top:0;">If you’re new here 🫶</h3>
+            <div class="track">
+              <div class="badge">1</div>
+              <div>
+                <strong>Start with the latest album/era</strong>
+                <small>Pick a top track + a live video and you’ll be locked in.</small>
+              </div>
+            </div>
+            <div class="track">
+              <div class="badge">2</div>
+              <div>
+                <strong>Then hit the covers record</strong>
+                <small>“Songs We Wish We Wrote” is a vibe-y gateway.</small>
+              </div>
+            </div>
+            <div class="track">
+              <div class="badge">3</div>
+              <div>
+                <strong>Finally: live sessions</strong>
+                <small>This band is built for the stage.</small>
+              </div>
+            </div>
+            <div class="ctaRow" style="margin-top: 12px;">
+              <a class="btn btnPrimary" href="https://open.spotify.com/album/7bBWzDOjdqWT5Fei74RB06" target="_blank" rel="noopener">
+                ▶️ Open “Songs We Wish We Wrote”
+              </a>
+              <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener">
+                📺 Find live clips (YouTube)
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0;">Gen-Z review board (aka vibes)</h3>
+            <p>
+              <strong>Rating:</strong> 10/10 “text your friends immediately” energy.<br>
+              <strong>Best for:</strong> road trips, getting ready, post-finals decompression, dancing in your room, screaming the chorus in the shower.<br><br>
+              <strong>Hot take:</strong> if you’ve never happy-cried at a live harmony, now is your moment.
+            </p>
+
+            <div style="height: 12px;"></div>
+
+            <div class="card" style="background: rgba(255,255,255,.55); box-shadow:none;">
+              <h3 style="margin-top:0; font-size:14px;">Optional: embed Spotify here</h3>
+              <p class="tiny" style="margin:0;">
+                Replace this block with Spotify’s embed iframe for an album or playlist.
+                (Spotify → Share → Embed).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHRIENDS -->
+    <section id="phriends">
+      <div class="wrap">
+        <h2 class="sectionTitle">Join the Phriends</h2>
+        <div class="grid3">
+          <div class="card">
+            <h3><span class="emoji" aria-hidden="true">📸</span>Socials</h3>
+            <p>
+              Follow for updates, BTS, and drops that happen at 2am (respectfully).
+              <br><br>
+              <a class="btn" href="https://www.instagram.com/sammyraemusic/" target="_blank" rel="noopener">Instagram</a>
+              <a class="btn" href="https://www.sammyrae.com/" target="_blank" rel="noopener">Official site</a>
+            </p>
+          </div>
+          <div class="card">
+            <h3><span class="emoji" aria-hidden="true">🎨</span>Fan creations</h3>
+            <p>
+              Add a gallery here: outfits, posters, bracelets, setlist pics, concert photodumps.
+              Keep it cute, credit artists, and ask before reposting.
+            </p>
+          </div>
+          <div class="card">
+            <h3><span class="emoji" aria-hidden="true">🧡</span>Good vibes policy</h3>
+            <p>
+              This is a community space: be kind, be hype, and don’t gatekeep.
+              Everyone’s a Friend here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="wrap">
+        <div class="footerCard">
+          <strong style="font-family:'Space Grotesk', Inter, sans-serif; font-size: 14px;">
+            Get updates (fan-made)
+          </strong>
+          <div class="formRow">
+            <input type="email" id="email" placeholder="your@email.com" aria-label="Email address"/>
+            <button class="btn btnPrimary" type="button" onclick="fakeSubscribe()">✨ Subscribe</button>
+          </div>
+          <div class="tiny" id="subscribeMsg" role="status" aria-live="polite"></div>
+          <div class="tiny">
+            Not affiliated with Sammy Rae &amp; The Friends. For official info: sammyrae.com.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    function fakeSubscribe(){
+      const el = document.getElementById('email');
+      const msg = document.getElementById('subscribeMsg');
+      const val = (el.value || '').trim();
+
+      if(!val){
+        msg.textContent = "Drop an email so we can send good news only (no spam, pinky promise).";
+        return;
+      }
+      if(!/^\S+@\S+\.\S+$/.test(val)){
+        msg.textContent = "That email looks a little sus 😅 — try again?";
+        return;
+      }
+      msg.textContent = "You’re in 💫 (Demo only — wire this up to a real list if you want.)";
+      el.value = "";
+    }
+  </script>
+</body>
+</html>
