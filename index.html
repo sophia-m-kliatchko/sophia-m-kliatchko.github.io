@@ -1,621 +1,1151 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Sammy Rae & The Friends — Fan Page</title>
-  <meta name="description" content="A clean, modern Gen Z fan page for Sammy Rae & The Friends." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sophia M. Kliatchko | Portfolio</title>
+  <meta name="description" content="Professional portfolio of code and projects by Sophia M. Kliatchko, a Carnegie Mellon student in applied and computational mathematics focused on quantitative analysis, data analytics, and teaching." />
 
-  <!-- Fonts (safe defaults). Swap for your favorites if you want. -->
+  <!--
+    AI usage note (for 15-113 Project 1 documentation):
+    - This file was drafted with assistance to generate a clean layout, accessible components,
+      responsive CSS, and small JS features (dark mode, smooth scrolling, form validation).
+    - You should read/modify the content and structure so you can explain it.
+  -->
+
+  <meta property="og:title" content="Sophia M. Kliatchko's Professional Portfolio" />
+  <meta property="og:description" content="Projects, experience, and code from a Carnegie Mellon student studying applied and computational mathematics, with a focus on data analysis, software engineering, and quantitative methods." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b1220" />
+
+  <!-- Fonts (lightweight, professional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* “Sammy Rae colors” vibe: bright + warm + playful */
-      --blue: #4AC8F5;     /* electric sky */
-      --coral: #FF6F61;    /* sunset coral */
-      --yellow:#FFDD57;    /* warm pop */
-      --ink:  #0B0F19;     /* soft black */
-      --paper:#FFFFFF;
+      --bg: #0b1220;
+      --bg2:#0d1730;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.08);
+      --stroke: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.68);
+      --faint: rgba(255,255,255,0.52);
 
-      --muted: rgba(11,15,25,.64);
-      --card: rgba(255,255,255,.78);
-      --stroke: rgba(11,15,25,.10);
+      --accentA:#4AC8F5; /* electric blue */
+      --accentB:#FF6F61; /* coral */
+      --accentC:#FFDD57; /* warm yellow */
 
-      --radius-xl: 22px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
+      --shadow: 0 18px 55px rgba(0,0,0,0.35);
+      --shadowSoft: 0 12px 28px rgba(0,0,0,0.25);
 
-      --shadow: 0 18px 55px rgba(11, 15, 25, .12);
-      --shadow-soft: 0 10px 30px rgba(11, 15, 25, .10);
+      --radiusXL: 22px;
+      --radiusLG: 18px;
+      --radiusMD: 14px;
 
-      --max: 1100px;
+      --max: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --display: "Space Grotesk", Inter, system-ui, sans-serif;
+    }
+
+    /* Light theme */
+    [data-theme="light"]{
+      --bg: #f7f8fb;
+      --bg2:#ffffff;
+      --card: rgba(17,24,39,0.04);
+      --card2: rgba(17,24,39,0.06);
+      --stroke: rgba(17,24,39,0.10);
+      --text: rgba(17,24,39,0.92);
+      --muted: rgba(17,24,39,0.68);
+      --faint: rgba(17,24,39,0.52);
+      --shadow: 0 18px 55px rgba(17,24,39,0.12);
+      --shadowSoft: 0 12px 28px rgba(17,24,39,0.10);
     }
 
     *{ box-sizing: border-box; }
-    html, body { height: 100%; }
+    html, body{ height: 100%; }
     body{
-      margin: 0;
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
       background:
-        radial-gradient(1200px 700px at 10% 10%, rgba(74,200,245,.28), transparent 60%),
-        radial-gradient(900px 600px at 90% 15%, rgba(255,111,97,.22), transparent 55%),
-        radial-gradient(1000px 700px at 40% 95%, rgba(255,221,87,.22), transparent 55%),
-        linear-gradient(180deg, #fbfbff 0%, #ffffff 45%, #faf9ff 100%);
+        radial-gradient(1200px 700px at 12% 10%, color-mix(in srgb, var(--accentA) 28%, transparent), transparent 60%),
+        radial-gradient(900px 600px at 90% 12%, color-mix(in srgb, var(--accentB) 20%, transparent), transparent 58%),
+        radial-gradient(1000px 700px at 38% 95%, color-mix(in srgb, var(--accentC) 18%, transparent), transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 60%, var(--bg) 120%);
       overflow-x: hidden;
+      line-height: 1.55;
     }
 
     a{ color: inherit; text-decoration: none; }
     a:hover{ text-decoration: underline; text-underline-offset: 4px; }
 
     .wrap{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .skip{
+      position:absolute; left:-999px; top:auto;
+      width:1px; height:1px; overflow:hidden;
+    }
+    .skip:focus{
+      position: fixed; left: 16px; top: 16px;
+      width: auto; height:auto;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--bg2) 92%, transparent);
+      border: 1px solid var(--stroke);
+      z-index: 999;
+    }
 
-    /* Top nav */
+    /* Header */
     header{
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(255,255,255,.72);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
       border-bottom: 1px solid var(--stroke);
     }
     .nav{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
       padding: 14px 0;
-      gap: 12px;
     }
     .brand{
-      display: flex;
-      align-items: center;
+      display:flex;
+      align-items:center;
       gap: 10px;
-      font-weight: 800;
+      min-width: 240px;
+    }
+    .mark{
+      width: 38px; height: 38px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accentA), var(--accentB), var(--accentC));
+      border: 1px solid color-mix(in srgb, var(--stroke) 80%, transparent);
+      box-shadow: var(--shadowSoft);
+      flex: 0 0 auto;
+    }
+    .brandTitle{
+      font-family: var(--display);
+      font-weight: 700;
       letter-spacing: -0.02em;
-      font-family: "Space Grotesk", Inter, sans-serif;
+      line-height: 1.05;
     }
-    .logo{
-      width: 36px; height: 36px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--blue), var(--coral), var(--yellow));
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(11,15,25,.08);
+    .brandSub{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
     }
+
     .navlinks{
-      display: flex;
-      gap: 14px;
+      display:flex;
       flex-wrap: wrap;
-      justify-content: flex-end;
-      font-weight: 600;
-      color: rgba(11,15,25,.72);
-      font-size: 14px;
+      justify-content:flex-end;
+      gap: 10px;
+      align-items:center;
     }
     .chip{
-      padding: 9px 12px;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
       border-radius: 999px;
       border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.6);
-      transition: transform .15s ease, box-shadow .15s ease;
+      background: color-mix(in srgb, var(--card) 90%, transparent);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--muted);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
     }
     .chip:hover{
       transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(11,15,25,.10);
-      text-decoration: none;
+      box-shadow: var(--shadowSoft);
+      text-decoration:none;
+      background: color-mix(in srgb, var(--card2) 90%, transparent);
+    }
+    .chip.active{
+      color: var(--text);
+      background: color-mix(in srgb, var(--card2) 92%, transparent);
+      border-color: color-mix(in srgb, var(--accentA) 40%, var(--stroke));
+    }
+    .toggle{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: color-mix(in srgb, var(--card) 90%, transparent);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .toggle:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadowSoft);
+      background: color-mix(in srgb, var(--card2) 90%, transparent);
     }
 
     /* Hero */
-    .hero{
-      padding: 44px 0 22px;
-    }
+    .hero{ padding: 42px 0 10px; }
     .heroGrid{
-      display: grid;
-      grid-template-columns: 1.35fr .65fr;
-      gap: 18px;
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
       align-items: stretch;
     }
 
-    .heroCard{
-      position: relative;
-      border-radius: var(--radius-xl);
+    .panel{
       border: 1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.60));
+      background: color-mix(in srgb, var(--card) 90%, transparent);
+      border-radius: var(--radiusXL);
       box-shadow: var(--shadow);
-      padding: 26px;
       overflow: hidden;
     }
-    .heroCard:before{
+    .heroMain{
+      position: relative;
+      padding: 26px;
+    }
+    .heroMain::before{
       content:"";
-      position: absolute;
-      inset: -120px -140px auto auto;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle at 30% 30%, rgba(74,200,245,.65), transparent 55%),
-                  radial-gradient(circle at 70% 70%, rgba(255,111,97,.55), transparent 55%);
-      filter: blur(1px);
+      position:absolute;
+      inset: -160px -140px auto auto;
+      width: 340px; height: 340px;
+      background:
+        radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accentA) 65%, transparent), transparent 60%),
+        radial-gradient(circle at 70% 70%, color-mix(in srgb, var(--accentB) 55%, transparent), transparent 62%);
       transform: rotate(14deg);
       opacity: .9;
       pointer-events: none;
+      filter: blur(1px);
     }
-    .heroTitle{
+
+    h1{
       margin: 0;
-      font-family: "Space Grotesk", Inter, sans-serif;
-      font-size: clamp(30px, 4vw, 46px);
-      line-height: 1.02;
+      font-family: var(--display);
+      font-weight: 800;
       letter-spacing: -0.04em;
+      line-height: 1.05;
+      font-size: clamp(28px, 4vw, 46px);
     }
-    .heroTitle span{
-      background: linear-gradient(90deg, var(--blue), var(--coral), var(--yellow));
+    .grad{
+      background: linear-gradient(90deg, var(--accentA), var(--accentB), var(--accentC));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    .sub{
+    .lede{
       margin: 12px 0 0;
+      max-width: 70ch;
+      color: var(--muted);
       font-size: 16px;
-      line-height: 1.55;
-      color: rgba(11,15,25,.74);
-      max-width: 62ch;
+    }
+
+    .kpis{
+      margin-top: 16px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .kpi{
+      border: 1px solid var(--stroke);
+      background: color-mix(in srgb, var(--card2) 92%, transparent);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
     }
     .ctaRow{
       margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
+      display:flex;
       gap: 10px;
-      align-items: center;
+      flex-wrap: wrap;
+      align-items:center;
     }
     .btn{
-      display: inline-flex;
-      align-items: center;
+      display:inline-flex;
+      align-items:center;
       gap: 10px;
       padding: 12px 14px;
       border-radius: 14px;
-      border: 1px solid rgba(11,15,25,.12);
-      background: rgba(255,255,255,.66);
-      font-weight: 700;
+      border: 1px solid var(--stroke);
+      background: color-mix(in srgb, var(--card2) 92%, transparent);
+      color: var(--text);
+      font-weight: 800;
       font-size: 14px;
+      box-shadow: var(--shadowSoft);
       transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-      box-shadow: 0 10px 24px rgba(11,15,25,.10);
     }
     .btn:hover{
       transform: translateY(-1px);
-      text-decoration: none;
-      background: rgba(255,255,255,.82);
-      box-shadow: 0 14px 36px rgba(11,15,25,.14);
+      text-decoration:none;
+      background: color-mix(in srgb, var(--card2) 98%, transparent);
+      box-shadow: var(--shadow);
     }
     .btnPrimary{
-      background: linear-gradient(135deg, rgba(74,200,245,.95), rgba(255,111,97,.92));
-      color: #071018;
-      border: 1px solid rgba(11,15,25,.10);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accentA) 95%, transparent), color-mix(in srgb, var(--accentB) 92%, transparent));
+      border-color: color-mix(in srgb, var(--accentA) 35%, var(--stroke));
+      color: color-mix(in srgb, #071018 92%, var(--text));
     }
-    .btnPrimary:hover{
-      background: linear-gradient(135deg, rgba(74,200,245,1), rgba(255,111,97,1));
-    }
-    .tiny{
-      font-size: 12px;
-      color: rgba(11,15,25,.56);
-    }
-
-    .sideCard{
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.72);
-      box-shadow: var(--shadow-soft);
-      padding: 18px;
-      display: grid;
-      gap: 12px;
-      align-content: start;
-      overflow: hidden;
-      position: relative;
-    }
-    .tag{
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
+    .btnGhost{
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      color: var(--muted);
       font-weight: 800;
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(11,15,25,.64);
     }
-    .tagDot{
-      width: 10px; height: 10px; border-radius: 99px;
-      background: linear-gradient(135deg, var(--yellow), var(--coral));
-      box-shadow: 0 8px 18px rgba(255,111,97,.18);
+    .tiny{ font-size: 12px; color: var(--faint); }
+
+    /* Side panel */
+    .heroSide{
+      padding: 18px;
+      display:grid;
+      gap: 14px;
+      align-content: start;
     }
-    .newsTitle{
-      font-family: "Space Grotesk", Inter, sans-serif;
+    .headshot{
+      display:flex;
+      gap: 14px;
+      align-items:center;
+    }
+    .avatar{
+      width: 70px; height: 70px;
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accentA) 35%, transparent), color-mix(in srgb, var(--accentB) 22%, transparent));
+      box-shadow: var(--shadowSoft);
+      overflow:hidden;
+      flex: 0 0 auto;
+    }
+    .avatar img{ width:100%; height:100%; object-fit: cover; display:block; }
+    .who{
+      display:grid;
+      gap: 3px;
+    }
+    .who strong{ font-size: 14px; }
+    .who span{ font-size: 12px; color: var(--muted); }
+
+    .quickList{
+      list-style: none;
+      padding: 0;
       margin: 0;
-      font-size: 18px;
-      letter-spacing: -0.02em;
+      display:grid;
+      gap: 10px;
     }
-    .newsBody{
-      margin: 0;
-      color: rgba(11,15,25,.72);
-      font-size: 14px;
-      line-height: 1.55;
+    .quickItem{
+      border: 1px solid var(--stroke);
+      background: color-mix(in srgb, var(--card2) 92%, transparent);
+      border-radius: var(--radiusMD);
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--muted);
     }
-    .newsMeta{
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
-    .pill{
+    .quickItem code{
+      font-family: var(--mono);
       font-size: 12px;
-      font-weight: 700;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(11,15,25,.10);
-      background: rgba(255,255,255,.6);
+      color: var(--text);
     }
 
     /* Sections */
     section{ padding: 18px 0; }
     .sectionTitle{
       margin: 0 0 10px;
-      font-family: "Space Grotesk", Inter, sans-serif;
+      font-family: var(--display);
       font-size: 20px;
       letter-spacing: -0.02em;
     }
+    .sectionSub{
+      margin: 0 0 16px;
+      color: var(--muted);
+      max-width: 80ch;
+    }
 
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
     .grid3{
-      display: grid;
+      display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
 
     .card{
-      border-radius: var(--radius-lg);
       border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.72);
-      box-shadow: var(--shadow-soft);
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      border-radius: var(--radiusLG);
+      box-shadow: var(--shadowSoft);
       padding: 16px;
-      transition: transform .15s ease, box-shadow .15s ease;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
     }
     .card:hover{
       transform: translateY(-2px);
-      box-shadow: 0 18px 50px rgba(11,15,25,.14);
+      box-shadow: var(--shadow);
+      background: color-mix(in srgb, var(--card2) 92%, transparent);
     }
 
-    .card h3{
-      margin: 0 0 8px;
+    .pillRow{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .pill{
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: color-mix(in srgb, var(--card2) 92%, transparent);
+      color: var(--muted);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Projects */
+    .projectHeader{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .projectHeader h3{
+      margin:0;
       font-size: 16px;
       letter-spacing: -0.01em;
     }
-    .card p{
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.55;
-      color: rgba(11,15,25,.70);
+    .projectHeader .meta{
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      white-space: nowrap;
     }
-    .emoji{
-      font-size: 18px;
-      margin-right: 8px;
+    .thumb{
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accentA) 18%, transparent), color-mix(in srgb, var(--accentB) 14%, transparent));
+      overflow:hidden;
+      margin: 10px 0 12px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+    }
+    .thumb img{ width:100%; height:100%; object-fit: cover; display:block; }
+    .projectDesc{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .projectLinks{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
     }
 
-    /* Playlist */
-    .playlist{
-      display: grid;
+    /* Experience timeline */
+    .timeline{
+      display:grid;
+      gap: 12px;
+    }
+    .role{
+      display:grid;
+      gap: 6px;
+      padding: 14px;
+      border-radius: var(--radiusLG);
+      border: 1px solid var(--stroke);
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+    }
+    .roleTop{
+      display:flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+    .roleTop strong{ font-size: 14px; }
+    .roleTop span{ font-size: 12px; color: var(--muted); font-weight: 700; }
+    .role ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contactGrid{
+      display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
-      align-items: stretch;
+      align-items: start;
     }
-    .track{
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(11,15,25,.10);
-      background: rgba(255,255,255,.60);
+    form{
+      display:grid;
+      gap: 10px;
     }
-    .badge{
-      width: 40px; height: 40px;
+    label{ font-size: 12px; font-weight: 800; color: var(--muted); letter-spacing: .02em; }
+    input, textarea{
+      width: 100%;
+      padding: 12px 12px;
       border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      background: linear-gradient(135deg, rgba(74,200,245,.95), rgba(255,221,87,.95));
-      border: 1px solid rgba(11,15,25,.10);
-      box-shadow: 0 12px 26px rgba(11,15,25,.10);
+      border: 1px solid var(--stroke);
+      background: color-mix(in srgb, var(--bg2) 60%, transparent);
+      color: var(--text);
+      outline: none;
+      font: inherit;
     }
-    .track strong{ display: block; }
-    .track small{ color: rgba(11,15,25,.60); }
+    textarea{ min-height: 110px; resize: vertical; }
+    .formNote{ font-size: 12px; color: var(--faint); margin: 0; }
 
     /* Footer */
     footer{
-      padding: 26px 0 34px;
-      color: rgba(11,15,25,.62);
+      padding: 26px 0 40px;
+      color: var(--faint);
       font-size: 13px;
     }
     .footerCard{
-      border-radius: var(--radius-xl);
+      border-radius: var(--radiusXL);
       border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.64);
-      padding: 18px;
-      display: grid;
-      gap: 10px;
-    }
-    .formRow{
-      display: flex;
-      gap: 10px;
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      padding: 16px;
+      display:flex;
+      justify-content: space-between;
+      gap: 12px;
       flex-wrap: wrap;
-      align-items: center;
-    }
-    input[type="email"]{
-      flex: 1 1 240px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(11,15,25,.14);
-      background: rgba(255,255,255,.82);
-      font: inherit;
-      outline: none;
+      align-items:center;
     }
 
     /* Responsive */
-    @media (max-width: 920px){
+    @media (max-width: 980px){
       .heroGrid{ grid-template-columns: 1fr; }
       .grid3{ grid-template-columns: 1fr; }
-      .playlist{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+      .contactGrid{ grid-template-columns: 1fr; }
+      .brand{ min-width: 0; }
     }
   </style>
 </head>
 
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+
   <header>
     <div class="wrap">
       <div class="nav">
         <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
+          <div class="mark" aria-hidden="true"></div>
           <div>
-            Sammy Rae &amp; The Friends<br>
-            <span class="tiny">fan page (unofficial) ✨</span>
+            <div class="brandTitle">Sophia M. Kliatchko</div>
+            <div class="brandSub">Applied & Computational Mathematics @ CMU • Modeling • Data • Teaching</div>
           </div>
         </div>
 
         <nav class="navlinks" aria-label="Primary">
           <a class="chip" href="#about">About</a>
-          <a class="chip" href="#news">News</a>
-          <a class="chip" href="#tour">Tour</a>
-          <a class="chip" href="#music">Music</a>
-          <a class="chip" href="#phriends">Phriends</a>
+          <a class="chip" href="#skills">Skills</a>
+          <a class="chip" href="#projects">Projects</a>
+          <a class="chip" href="#experience">Experience</a>
+          <a class="chip" href="#contact">Contact</a>
+          <button class="toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+            <span aria-hidden="true">🌓</span>
+            <span id="themeLabel">Theme</span>
+          </button>
         </nav>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- HERO -->
-    <div class="wrap hero">
-      <div class="heroGrid">
-        <div class="heroCard">
-          <h1 class="heroTitle">
-            A little corner of the internet for
-            <span>Sammy Rae &amp; The Friends</span>
-          </h1>
-          <p class="sub">
-            Big joy. Bigger vocals. Band energy that feels like group-chat chaos (but in the best way).
-            This is a clean, Gen-Z-friendly fan hub for tour hype, fave tracks, and “did you SEE that live clip??” moments.
-          </p>
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div class="panel heroMain">
+            <h1>
+              I build <span class="grad">clean, reliable software</span> for
+              computational science, data analysis, and learning tools.
+            </h1>
 
-          <div class="ctaRow">
-            <a class="btn btnPrimary" href="https://www.sammyrae.com/" target="_blank" rel="noopener">
-              🌈 Official site
-            </a>
-            <a class="btn" href="https://www.sammyrae.com/gigs-hangs" target="_blank" rel="noopener">
-              🎟️ Tour dates
-            </a>
-            <a class="btn" href="https://open.spotify.com/artist/7g0WkEBzpqkqO5AOxXti2L" target="_blank" rel="noopener">
-              🎧 Spotify
-            </a>
-            <span class="tiny">Tip: swap links/sections to match your vision.</span>
+            <p class="lede">
+              I’m a B.S. student in Applied &amp; Computational Mathematics at Carnegie Mellon University with a 4.0 GPA.
+              I’ve built Python applications (including an OOP calendar app), run large-scale molecular dynamics simulations,
+              and taught calculus through recitations and office hours.
+            </p>
+
+            <div class="kpis" aria-label="Highlights">
+              <div class="kpi">🎓 CMU • B.S. Applied &amp; Computational Math</div>
+              <div class="kpi">🏅 GPA 4.0 • Dean’s List, High Honors</div>
+              <div class="kpi">🧪 LAMMPS • OVITO • MATLAB • Python</div>
+              <div class="kpi">🧑‍🏫 TA • Calculus recitations + office hours</div>
+            </div>
+
+            <div class="ctaRow">
+              <a class="btn btnPrimary" href="#projects">View projects</a>
+              <a class="btn" href="#contact">Contact me</a>
+              <a class="btn btnGhost" href="assets/Sophia_Kliatchko_Resume.pdf" download>
+                ⬇︎ Download resume
+              </a>
+              <span class="tiny">Tip: upload your PDF as <code style="font-family:var(--mono)">assets/Sophia_Kliatchko_Resume.pdf</code>.</span>
+            </div>
           </div>
+
+          <aside class="panel heroSide" aria-label="Quick info">
+            <div class="headshot">
+              <div class="avatar">
+                <!-- Replace this with your real headshot file -->
+                <img
+                  src="data:image/svg+xml;utf8,
+                  <svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
+                    <defs>
+                      <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+                        <stop offset='0' stop-color='%234AC8F5' stop-opacity='0.55'/>
+                        <stop offset='0.55' stop-color='%23FF6F61' stop-opacity='0.45'/>
+                        <stop offset='1' stop-color='%23FFDD57' stop-opacity='0.45'/>
+                      </linearGradient>
+                    </defs>
+                    <rect width='100%25' height='100%25' rx='28' fill='url(%23g)'/>
+                    <circle cx='200' cy='155' r='58' fill='rgba(255,255,255,0.55)'/>
+                    <rect x='92' y='232' width='216' height='122' rx='58' fill='rgba(255,255,255,0.45)'/>
+                    <text x='50%25' y='92%25' text-anchor='middle' font-family='Inter, Arial' font-size='22' fill='rgba(15,23,42,0.75)'>
+                      add headshot
+                    </text>
+                  </svg>"
+                  alt="Headshot placeholder"
+                />
+              </div>
+              <div class="who">
+                <strong>Open to internships</strong>
+                <span>Software • Data • Computational modeling</span>
+              </div>
+            </div>
+
+            <ul class="quickList">
+              <li class="quickItem">
+                <strong>Email:</strong> <code id="emailText">sophia.kliatchko@gmail.com</code>
+                &nbsp;•&nbsp;<a href="#" id="copyEmail">copy</a>
+              </li>
+              <li class="quickItem">
+                <strong>LinkedIn:</strong> <code>sophia-kliatchko-14201537b</code>
+                &nbsp;•&nbsp;<a href="https://www.linkedin.com/in/sophia-kliatchko-14201537b/" target="_blank" rel="noopener">open</a>
+              </li>
+              <li class="quickItem">
+                <strong>GitHub:</strong> <code>YOUR_GITHUB_USERNAME</code>
+                &nbsp;•&nbsp;<a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">open</a>
+              </li>
+              <li class="quickItem">
+                <strong>Location:</strong> Pittsburgh, PA (CMU)
+              </li>
+            </ul>
+
+            <p class="tiny" style="margin:0">
+              Built as a portfolio homepage: clear navigation, projects, and contact info (plus dark mode + smooth scrolling).
+            </p>
+          </aside>
         </div>
-
-        <!-- NEWS SIDECARD -->
-        <aside class="sideCard" id="news" aria-label="Recent news">
-          <div class="tag"><span class="tagDot" aria-hidden="true"></span> recent news</div>
-          <h2 class="newsTitle">What’s new lately 👀</h2>
-          <p class="newsBody">
-            As of early <strong>January 2026</strong>, the band’s team has been teasing that <em>2026 is going to be a jam-packed year</em>
-            with more to reveal soon. They’re also booked for <strong>Levitate Music &amp; Arts Festival</strong> in Marshfield, MA
-            on <strong>July 18, 2026</strong>. And if you missed it: their covers record
-            <strong>“Songs We Wish We Wrote”</strong> dropped in <strong>2025</strong> (pure serotonin).
-          </p>
-          <div class="newsMeta">
-            <span class="pill">📅 Updated: Jan 2026</span>
-            <span class="pill">🪩 Festival: Levitate 2026</span>
-            <span class="pill">💿 Covers: 2025 release</span>
-          </div>
-          <p class="tiny" style="margin: 0;">
-            (This is a fan summary. Always check official channels for final details.)
-          </p>
-        </aside>
       </div>
-    </div>
+    </section>
 
     <!-- ABOUT -->
     <section id="about">
       <div class="wrap">
-        <h2 class="sectionTitle">About the band</h2>
+        <h2 class="sectionTitle">About</h2>
+        <p class="sectionSub">
+          I study Applied &amp; Computational Mathematics at CMU (May 2028) with a focus on computational physics,
+          scientific computing, and building tools that make complex systems easier to understand.
+          I enjoy projects that combine careful modeling, clean code, and clear communication.
+        </p>
+
+        <div class="grid2">
+          <div class="card">
+            <h3 style="margin:0 0 8px;">What I’m into</h3>
+            <p class="projectDesc">
+              Computational modeling (molecular dynamics), data analysis &amp; visualization, algorithmic problem solving,
+              and educational tools that help people learn faster.
+            </p>
+            <div class="pillRow" aria-label="Interests">
+              <span class="pill">Molecular dynamics</span>
+              <span class="pill">Scientific Python</span>
+              <span class="pill">Visualization</span>
+              <span class="pill">OOP & data structures</span>
+              <span class="pill">Teaching & mentorship</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin:0 0 8px;">Education</h3>
+            <p class="projectDesc">
+              <strong>Carnegie Mellon University</strong> — B.S. Applied &amp; Computational Mathematics<br>
+              <span style="color:var(--muted)">Cumulative GPA: 4.0/4.0 • Dean’s List, High Honors • Expected May 2028</span>
+            </p>
+            <div class="pillRow" aria-label="Coursework">
+              <span class="pill">Reasoning with Data</span>
+              <span class="pill">Fundamentals of Programming &amp; CS</span>
+              <span class="pill">Linear Algebra</span>
+              <span class="pill">Differential Equations</span>
+              <span class="pill">Discrete Math</span>
+              <span class="pill">Physics I–III</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="wrap">
+        <h2 class="sectionTitle">Skills</h2>
+        <p class="sectionSub">A quick overview of tools I’ve used in coursework, research, and projects.</p>
+
         <div class="grid3">
           <div class="card">
-            <h3><span class="emoji" aria-hidden="true">🎤</span>Sound</h3>
-            <p>
-              Genre-blend done right: pop-soul + jazz sparkle + rock punch. The vibe is “everyone’s invited,”
-              and the live show is basically cardio.
+            <h3 style="margin:0 0 8px;">Programming</h3>
+            <p class="projectDesc">
+              Python (NumPy, analysis, visualization), Java, JavaScript, UNIX/Linux environments
             </p>
+            <div class="pillRow">
+              <span class="pill">Python</span><span class="pill">Java</span><span class="pill">JavaScript</span><span class="pill">Linux</span>
+            </div>
           </div>
+
           <div class="card">
-            <h3><span class="emoji" aria-hidden="true">🤝</span>Energy</h3>
-            <p>
-              It’s not just a band — it’s a community. If you’ve ever left a concert feeling like you made 20 new friends,
-              you get it.
+            <h3 style="margin:0 0 8px;">Scientific Computing</h3>
+            <p class="projectDesc">
+              LAMMPS simulations, OVITO post-processing, MATLAB analysis, large-scale data workflows, parallel computing
             </p>
+            <div class="pillRow">
+              <span class="pill">LAMMPS</span><span class="pill">OVITO</span><span class="pill">MATLAB</span><span class="pill">HPC basics</span>
+            </div>
           </div>
+
           <div class="card">
-            <h3><span class="emoji" aria-hidden="true">✨</span>Core aesthetic</h3>
-            <p>
-              Bright, warm, and modern: electric blues, sunset corals, and sunshine yellow — clean layout + playful accents,
-              like stickers on a minimalist laptop.
+            <h3 style="margin:0 0 8px;">Communication</h3>
+            <p class="projectDesc">
+              Technical reporting, data visualization, explaining quantitative ideas to diverse audiences
             </p>
+            <div class="pillRow">
+              <span class="pill">Writing</span><span class="pill">Data viz</span><span class="pill">Teaching</span><span class="pill">Presentations</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TOUR -->
-    <section id="tour">
+    <!-- PROJECTS -->
+    <section id="projects">
       <div class="wrap">
-        <h2 class="sectionTitle">Tour &amp; hangs</h2>
-        <div class="card">
-          <h3 style="margin-top:0;">Next highlighted date</h3>
-          <p style="margin:0 0 10px;">
-            <strong>Levitate Music &amp; Arts Festival</strong> — Marshfield, MA — <strong>July 18, 2026</strong>
-          </p>
-          <div class="ctaRow" style="margin-top: 0;">
-            <a class="btn btnPrimary" href="https://www.sammyrae.com/gigs-hangs" target="_blank" rel="noopener">See official tour list</a>
-            <a class="btn" href="https://www.ticketmaster.com/sammy-rae-the-friends-tickets/artist/2791075" target="_blank" rel="noopener">Tickets (where available)</a>
-          </div>
-          <p class="tiny" style="margin: 10px 0 0;">Pro tip: embed a Bandsintown widget here if you want auto-updating dates.</p>
+        <h2 class="sectionTitle">Projects</h2>
+        <p class="sectionSub">
+          Selected work. Each project card has a brief description, a screenshot placeholder, and links (swap in your real repos/demos).
+        </p>
+
+        <div class="grid2">
+          <!-- Portfolio project itself -->
+          <article class="card" aria-label="Project: Portfolio Website">
+            <div class="projectHeader">
+              <h3>Personal Portfolio Website</h3>
+              <div class="meta">HTML • CSS • JS</div>
+            </div>
+            <div class="thumb" aria-hidden="true">
+              <img
+                src="data:image/svg+xml;utf8,
+                <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'>
+                  <defs>
+                    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+                      <stop offset='0' stop-color='%234AC8F5' stop-opacity='0.25'/>
+                      <stop offset='0.55' stop-color='%23FF6F61' stop-opacity='0.20'/>
+                      <stop offset='1' stop-color='%23FFDD57' stop-opacity='0.18'/>
+                    </linearGradient>
+                  </defs>
+                  <rect width='100%25' height='100%25' fill='url(%23g)'/>
+                  <rect x='70' y='80' width='1460' height='740' rx='36' fill='rgba(255,255,255,0.20)'/>
+                  <text x='50%25' y='50%25' text-anchor='middle' font-family='Inter, Arial' font-size='42' fill='rgba(255,255,255,0.70)'>
+                    screenshot goes here
+                  </text>
+                </svg>"
+                alt="Portfolio project screenshot placeholder"
+              />
+            </div>
+            <p class="projectDesc">
+              A responsive, employer-focused portfolio with dark mode, smooth scrolling, and a contact form.
+              Designed for readability and quick scanning by recruiters.
+            </p>
+            <div class="pillRow" aria-label="Portfolio features">
+              <span class="pill">Responsive layout</span>
+              <span class="pill">Dark mode</span>
+              <span class="pill">Accessibility</span>
+              <span class="pill">SEO basics</span>
+            </div>
+            <div class="projectLinks">
+              <a class="btn btnPrimary" href="YOUR_DEPLOYED_URL" target="_blank" rel="noopener">Live site</a>
+              <a class="btn" href="YOUR_GITHUB_REPO_URL" target="_blank" rel="noopener">Source</a>
+            </div>
+          </article>
+
+          <!-- ADHDCal -->
+          <article class="card" aria-label="Project: ADHDCal">
+            <div class="projectHeader">
+              <h3>ADHDCal — Calendar & Notes App</h3>
+              <div class="meta">Python • OOP • Hash maps</div>
+            </div>
+            <div class="thumb" aria-hidden="true">
+              <img
+                src="data:image/svg+xml;utf8,
+                <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'>
+                  <rect width='100%25' height='100%25' fill='rgba(255,255,255,0.06)'/>
+                  <rect x='70' y='80' width='1460' height='740' rx='36' fill='rgba(74,200,245,0.15)'/>
+                  <text x='50%25' y='50%25' text-anchor='middle' font-family='Inter, Arial' font-size='42' fill='rgba(255,255,255,0.70)'>
+                    add ADHDCal screenshot
+                  </text>
+                </svg>"
+                alt="ADHDCal screenshot placeholder"
+              />
+            </div>
+            <p class="projectDesc">
+              Designed and implemented a custom calendar/notes application in Python using object-oriented programming and
+              hash-based data structures for efficient event storage, fast lookup, and conflict checking.
+            </p>
+            <div class="pillRow">
+              <span class="pill">Custom data structures</span>
+              <span class="pill">Conflict detection</span>
+              <span class="pill">Interactive navigation</span>
+              <span class="pill">Clean UX</span>
+            </div>
+            <div class="projectLinks">
+              <a class="btn btnPrimary" href="ADHDCAL_DEMO_URL" target="_blank" rel="noopener">Demo</a>
+              <a class="btn" href="ADHDCAL_GITHUB_URL" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Research -->
+          <article class="card" aria-label="Project: Molecular Dynamics Research">
+            <div class="projectHeader">
+              <h3>Computational Modeling (M5 Group)</h3>
+              <div class="meta">LAMMPS • OVITO • MATLAB</div>
+            </div>
+            <div class="thumb" aria-hidden="true">
+              <img
+                src="data:image/svg+xml;utf8,
+                <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'>
+                  <rect width='100%25' height='100%25' fill='rgba(255,255,255,0.06)'/>
+                  <rect x='70' y='80' width='1460' height='740' rx='36' fill='rgba(255,111,97,0.12)'/>
+                  <text x='50%25' y='50%25' text-anchor='middle' font-family='Inter, Arial' font-size='42' fill='rgba(255,255,255,0.70)'>
+                    add simulation figure
+                  </text>
+                </svg>"
+                alt="Research screenshot placeholder"
+              />
+            </div>
+            <p class="projectDesc">
+              Ran molecular dynamics simulations in LAMMPS, processed large datasets in MATLAB/OVITO, and authored a technical report
+              analyzing excess-entropy scaling in Lennard-Jones fluids.
+            </p>
+            <div class="pillRow">
+              <span class="pill">Simulation pipelines</span>
+              <span class="pill">Data processing</span>
+              <span class="pill">Scientific reporting</span>
+              <span class="pill">Visualization</span>
+            </div>
+            <div class="projectLinks">
+              <a class="btn btnPrimary" href="RESEARCH_REPORT_URL" target="_blank" rel="noopener">Report</a>
+              <a class="btn" href="RESEARCH_CODE_URL" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Artemis -->
+          <article class="card" aria-label="Project: Artemis Mission Simulation">
+            <div class="projectHeader">
+              <h3>Artemis Mission Simulation</h3>
+              <div class="meta">Python • Numerical modeling</div>
+            </div>
+            <div class="thumb" aria-hidden="true">
+              <img
+                src="data:image/svg+xml;utf8,
+                <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'>
+                  <rect width='100%25' height='100%25' fill='rgba(255,255,255,0.06)'/>
+                  <rect x='70' y='80' width='1460' height='740' rx='36' fill='rgba(255,221,87,0.12)'/>
+                  <text x='50%25' y='50%25' text-anchor='middle' font-family='Inter, Arial' font-size='42' fill='rgba(255,255,255,0.70)'>
+                    add animation frame / poster image
+                  </text>
+                </svg>"
+                alt="Artemis simulation screenshot placeholder"
+              />
+            </div>
+            <p class="projectDesc">
+              Built an animated, physics-based simulation of a multi-stage rocket mission (Mars → Phobos), using differential equations
+              and numerical methods for forces, kinematics, and fuel consumption. Presented results via a poster.
+            </p>
+            <div class="pillRow">
+              <span class="pill">ODE modeling</span>
+              <span class="pill">Animation</span>
+              <span class="pill">Team collaboration</span>
+              <span class="pill">Poster presentation</span>
+            </div>
+            <div class="projectLinks">
+              <a class="btn btnPrimary" href="ARTEMIS_VIDEO_URL" target="_blank" rel="noopener">Video</a>
+              <a class="btn" href="ARTEMIS_CODE_URL" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- MUSIC -->
-    <section id="music">
+    <!-- EXPERIENCE -->
+    <section id="experience">
       <div class="wrap">
-        <h2 class="sectionTitle">Starter pack playlist</h2>
+        <h2 class="sectionTitle">Experience</h2>
+        <p class="sectionSub">Roles that show how I work: communication, rigor, collaboration, and execution.</p>
 
-        <div class="playlist">
+        <div class="grid2">
           <div class="card">
-            <h3 style="margin-top:0;">If you’re new here 🫶</h3>
-            <div class="track">
-              <div class="badge">1</div>
-              <div>
-                <strong>Start with the latest album/era</strong>
-                <small>Pick a top track + a live video and you’ll be locked in.</small>
+            <h3 style="margin:0 0 10px;">Work</h3>
+            <div class="timeline" role="list">
+              <div class="role" role="listitem">
+                <div class="roleTop">
+                  <strong>Teaching Assistant — Differential &amp; Integral Calculus (CMU)</strong>
+                  <span>Jul/Aug 2025 – Present</span>
+                </div>
+                <ul>
+                  <li>Teach weekly recitations and hold office hours; communicate challenging math concepts clearly.</li>
+                  <li>Collaborate with faculty/TAs on course structure and instructional improvements.</li>
+                </ul>
               </div>
-            </div>
-            <div class="track">
-              <div class="badge">2</div>
-              <div>
-                <strong>Then hit the covers record</strong>
-                <small>“Songs We Wish We Wrote” is a vibe-y gateway.</small>
+
+              <div class="role" role="listitem">
+                <div class="roleTop">
+                  <strong>Engineering Intern — Tietjen &amp; Venegas Consulting Engineers</strong>
+                  <span>May–Jun 2024 (and/or May 2024–Jun 2025 per resume version)</span>
+                </div>
+                <ul>
+                  <li>Performed quantitative analysis for HVAC system design and energy calculations.</li>
+                  <li>Supported engineering workflows through documentation and client-facing coordination.</li>
+                </ul>
               </div>
-            </div>
-            <div class="track">
-              <div class="badge">3</div>
-              <div>
-                <strong>Finally: live sessions</strong>
-                <small>This band is built for the stage.</small>
-              </div>
-            </div>
-            <div class="ctaRow" style="margin-top: 12px;">
-              <a class="btn btnPrimary" href="https://open.spotify.com/album/7bBWzDOjdqWT5Fei74RB06" target="_blank" rel="noopener">
-                ▶️ Open “Songs We Wish We Wrote”
-              </a>
-              <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener">
-                📺 Find live clips (YouTube)
-              </a>
             </div>
           </div>
 
           <div class="card">
-            <h3 style="margin-top:0;">Gen-Z review board (aka vibes)</h3>
-            <p>
-              <strong>Rating:</strong> 10/10 “text your friends immediately” energy.<br>
-              <strong>Best for:</strong> road trips, getting ready, post-finals decompression, dancing in your room, screaming the chorus in the shower.<br><br>
-              <strong>Hot take:</strong> if you’ve never happy-cried at a live harmony, now is your moment.
+            <h3 style="margin:0 0 10px;">Leadership &amp; Teaching</h3>
+            <div class="timeline" role="list">
+              <div class="role" role="listitem">
+                <div class="roleTop">
+                  <strong>Soprano Section Leader — D Flat Singers (CMU)</strong>
+                  <span>Dec 2024 – Present</span>
+                </div>
+                <ul>
+                  <li>Lead rehearsals, mentor new members, and coordinate logistics.</li>
+                  <li>Facilitate communication between performers and leadership.</li>
+                </ul>
+              </div>
+
+              <div class="role" role="listitem">
+                <div class="roleTop">
+                  <strong>Freelance Math Tutor — Middle &amp; Upper School</strong>
+                  <span>Sep 2021 – Aug 2024</span>
+                </div>
+                <ul>
+                  <li>1:1 instruction in Algebra, Trig, and intro Calculus; built study habits + reasoning skills.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pillRow" aria-label="Strengths">
+              <span class="pill">Explaining complex ideas</span>
+              <span class="pill">Structured problem-solving</span>
+              <span class="pill">Reliable execution</span>
+              <span class="pill">Team collaboration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="wrap">
+        <h2 class="sectionTitle">Contact</h2>
+        <p class="sectionSub">
+          The fastest way to reach me is email. You can also use this form (it opens your email client).
+        </p>
+
+        <div class="contactGrid">
+          <div class="card">
+            <h3 style="margin:0 0 10px;">Links</h3>
+            <div class="pillRow">
+              <a class="pill" href="mailto:sophia.kliatchko@gmail.com">📩 Email</a>
+              <a class="pill" href="https://www.linkedin.com/in/sophia-kliatchko-14201537b/" target="_blank" rel="noopener">💼 LinkedIn</a>
+              <a class="pill" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">🧑‍💻 GitHub</a>
+            </div>
+            <p class="tiny" style="margin-top:10px;">
+              If you prefer: attach your resume PDF and include it as a download in the hero section.
             </p>
+          </div>
 
-            <div style="height: 12px;"></div>
+          <div class="card">
+            <h3 style="margin:0 0 10px;">Message</h3>
+            <form id="contactForm" novalidate>
+              <div>
+                <label for="name">NAME</label>
+                <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="from">EMAIL</label>
+                <input id="from" name="from" type="email" autocomplete="email" placeholder="you@email.com" required />
+              </div>
+              <div>
+                <label for="msg">MESSAGE</label>
+                <textarea id="msg" name="msg" placeholder="What would you like to talk about?" required></textarea>
+              </div>
 
-            <div class="card" style="background: rgba(255,255,255,.55); box-shadow:none;">
-              <h3 style="margin-top:0; font-size:14px;">Optional: embed Spotify here</h3>
-              <p class="tiny" style="margin:0;">
-                Replace this block with Spotify’s embed iframe for an album or playlist.
-                (Spotify → Share → Embed).
+              <div class="ctaRow" style="margin-top: 2px;">
+                <button class="btn btnPrimary" type="submit">Send</button>
+                <button class="btn btnGhost" type="button" id="clearBtn">Clear</button>
+                <span class="tiny" id="formStatus" role="status" aria-live="polite"></span>
+              </div>
+
+              <p class="formNote">
+                This form uses <code style="font-family:var(--mono)">mailto:</code> (no server required). For a hosted form later, use Formspree/Netlify Forms.
               </p>
-            </div>
+            </form>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PHRIENDS -->
-    <section id="phriends">
-      <div class="wrap">
-        <h2 class="sectionTitle">Join the Phriends</h2>
-        <div class="grid3">
-          <div class="card">
-            <h3><span class="emoji" aria-hidden="true">📸</span>Socials</h3>
-            <p>
-              Follow for updates, BTS, and drops that happen at 2am (respectfully).
-              <br><br>
-              <a class="btn" href="https://www.instagram.com/sammyraemusic/" target="_blank" rel="noopener">Instagram</a>
-              <a class="btn" href="https://www.sammyrae.com/" target="_blank" rel="noopener">Official site</a>
-            </p>
-          </div>
-          <div class="card">
-            <h3><span class="emoji" aria-hidden="true">🎨</span>Fan creations</h3>
-            <p>
-              Add a gallery here: outfits, posters, bracelets, setlist pics, concert photodumps.
-              Keep it cute, credit artists, and ask before reposting.
-            </p>
-          </div>
-          <div class="card">
-            <h3><span class="emoji" aria-hidden="true">🧡</span>Good vibes policy</h3>
-            <p>
-              This is a community space: be kind, be hype, and don’t gatekeep.
-              Everyone’s a Friend here.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
       <div class="wrap">
         <div class="footerCard">
-          <strong style="font-family:'Space Grotesk', Inter, sans-serif; font-size: 14px;">
-            Get updates (fan-made)
-          </strong>
-          <div class="formRow">
-            <input type="email" id="email" placeholder="your@email.com" aria-label="Email address"/>
-            <button class="btn btnPrimary" type="button" onclick="fakeSubscribe()">✨ Subscribe</button>
+          <div>
+            <strong style="font-family:var(--display); letter-spacing:-0.01em;">Sophia M. Kliatchko</strong>
+            <span class="tiny"> — Built for recruiters: clean, fast, readable.</span>
           </div>
-          <div class="tiny" id="subscribeMsg" role="status" aria-live="polite"></div>
-          <div class="tiny">
-            Not affiliated with Sammy Rae &amp; The Friends. For official info: sammyrae.com.
-          </div>
+          <div class="tiny">© <span id="year"></span> • Last updated: <span id="lastUpdated"></span></div>
         </div>
       </div>
     </footer>
   </main>
 
   <script>
-    function fakeSubscribe(){
-      const el = document.getElementById('email');
-      const msg = document.getElementById('subscribeMsg');
-      const val = (el.value || '').trim();
+    // ===== Theme Toggle (dark/light) =====
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
 
-      if(!val){
-        msg.textContent = "Drop an email so we can send good news only (no spam, pinky promise).";
-        return;
-      }
-      if(!/^\S+@\S+\.\S+$/.test(val)){
-        msg.textContent = "That email looks a little sus 😅 — try again?";
-        return;
-      }
-      msg.textContent = "You’re in 💫 (Demo only — wire this up to a real list if you want.)";
-      el.value = "";
+    function setTheme(theme){
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      label.textContent = theme === 'light' ? 'Light' : 'Dark';
     }
+
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light' || saved === 'dark') setTheme(saved);
+    else setTheme('dark');
+
+    toggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'dark';
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // ===== Smooth scrolling (native + fallback) =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({behavior: 'smooth', block: 'start'});
+        history.replaceState(null, "", id);
+      });
+    });
+
+    // ===== Active nav highlight =====
+    const sections = ['about','skills','projects','experience','contact']
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    const navLinks = Array.from(document.querySelectorAll('.navlinks a.chip'));
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0.01 });
+
+    sections.forEach(sec => io.observe(sec));
+
+    // ===== Copy email =====
+    const copyBtn = document.getElementById('copyEmail');
+    const emailText = document.getElementById('emailText');
+
+    copyBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const email = emailText.textContent.trim();
+      try{
+        await navigator.clipboard.writeText(email);
+        copyBtn.textContent = "copied!";
+        setTimeout(() => copyBtn.textContent = "copy", 1200);
+      }catch{
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = email;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        copyBtn.textContent = "copied!";
+        setTimeout(() => copyBtn.textContent = "copy", 1200);
+      }
+    });
+
+    // ===== Contact form validation + mailto submit =====
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function setStatus(msg){
+      statusEl.textContent = msg;
+    }
+
+    clearBtn.addEventListener('click', () => {
+      form.reset();
+      setStatus("");
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const from = document.getElementById('from').value.trim();
+      const msg  = document.getElementById('msg').value.trim();
+
+      if (!name || !from || !msg){
+        setStatus("Please fill out all fields.");
+        return;
+      }
+      if (!/^\S+@\S+\.\S+$/.test(from)){
+        setStatus("Please enter a valid email.");
+        return;
+      }
+
+      const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+      const body = encodeURIComponent(`From: ${name} <${from}>\n\n${msg}\n\n— sent via portfolio site`);
+      const to = "sophia.kliatchko@gmail.com";
+
+      setStatus("Opening your email client…");
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    });
+
+    // ===== Footer metadata =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString(undefined, {
+      year: 'numeric', month: 'short', day: 'numeric'
+    });
   </script>
 </body>
 </html>
-
-<!--hiiiii-->
