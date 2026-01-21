@@ -145,14 +145,14 @@
       display:flex;
       flex-wrap: wrap;
       justify-content:flex-end;
-      gap: 10px;
+      gap: 6px;
       align-items:center;
     }
     .chip{
       display:inline-flex;
       align-items:center;
       gap: 8px;
-      padding: 10px 12px;
+      padding: 8px 10px;
       border-radius: 999px;
       border: 1px solid var(--stroke);
       background: color-mix(in srgb, var(--card) 90%, transparent);
@@ -209,6 +209,7 @@
       overflow: hidden;
     }
     .heroMain{
+      grid-column: 1 / -1;
       position: relative;
       padding: 26px;
     }
@@ -224,6 +225,16 @@
       opacity: .9;
       pointer-events: none;
       filter: blur(1px);
+    }
+
+    .heroIntro{
+      margin-bottom: 20px;
+    }
+
+    .heroIntro h1{
+      max-width: none;
+      width: 100%;
+      font-size: clamp(32px, 5vw, 56px);
     }
 
     h1{
@@ -565,13 +576,18 @@
     <!-- HERO -->
     <section class="hero">
       <div class="wrap">
-        <div class="heroGrid">
-          <div class="panel heroMain">
+
+        <!-- FULL-WIDTH HEADLINE -->
+        <div class="heroIntro">
             <h1>
               I build <span class="grad">clean, reliable software</span> for
               research, data analysis, and mathematical modelling.
             </h1>
+        </div>
 
+        <!-- TWO-COLUMN CONTENT BELOW -->
+        <div class="heroGrid">
+          <div class="panel heroMain">
             <p class="lede">
               I’m a B.S. student in Applied &amp; Computational Mathematics at Carnegie Mellon University with a 4.0 GPA.
               I’ve built Python applications, run large-scale computational physics simulations,
