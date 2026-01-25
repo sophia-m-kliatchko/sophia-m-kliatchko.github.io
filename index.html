@@ -448,7 +448,13 @@
       margin: 10px 0 12px;
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
     }
-    .thumb img{ width:100%; height:100%; object-fit: cover; display:block; }
+    .thumb img{ 
+      width:100%; 
+      height:100%; 
+      object-fit: cover; 
+      display:block;
+      object-position: center top;
+    }
     .projectDesc{
       margin:0;
       color: var(--muted);
@@ -732,24 +738,7 @@
               <div class="meta">HTML • CSS • JS</div>
             </div>
             <div class="thumb" aria-hidden="true">
-              <img
-                src="Portfolio_Website_Screenshot.png,""
-                <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'>
-                  <defs>
-                    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-                      <stop offset='0' stop-color='%234AC8F5' stop-opacity='0.25'/>
-                      <stop offset='0.55' stop-color='%23FF6F61' stop-opacity='0.20'/>
-                      <stop offset='1' stop-color='%23FFDD57' stop-opacity='0.18'/>
-                    </linearGradient>
-                  </defs>
-                  <rect width='100%25' height='100%25' fill='url(%23g)'/>
-                  <rect x='70' y='80' width='1460' height='740' rx='36' fill='rgba(255,255,255,0.20)'/>
-                  <text x='50%25' y='50%25' text-anchor='middle' font-family='Inter, Arial' font-size='42' fill='rgba(255,255,255,0.70)'>
-                    screenshot goes here
-                  </text>
-                </svg>
-                alt="Portfolio project screenshot placeholder"
-              />
+              <img src="assets/Portfolio_Website_Screenshot.png" alt="Portfolio project screenshot" />
             </div>
             <p class="projectDesc">
               A responsive, employer-focused portfolio with dark mode, smooth scrolling, and a contact form.
@@ -761,7 +750,6 @@
               <span class="pill">Accessibility</span>
               <span class="pill">SEO basics</span>
             </div>
-            
           </article>
 
           <!-- ADHDCal -->
@@ -771,17 +759,7 @@
               <div class="meta">Python • OOP • Hash maps</div>
             </div>
             <div class="thumb" aria-hidden="true">
-              <img
-                src="data:image/svg+xml;utf8,
-                <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'>
-                  <rect width='100%25' height='100%25' fill='rgba(255,255,255,0.06)'/>
-                  <rect x='70' y='80' width='1460' height='740' rx='36' fill='rgba(74,200,245,0.15)'/>
-                  <text x='50%25' y='50%25' text-anchor='middle' font-family='Inter, Arial' font-size='42' fill='rgba(255,255,255,0.70)'>
-                    add ADHDCal screenshot
-                  </text>
-                </svg>"
-                alt="ADHDCal screenshot placeholder"
-              />
+              <img src="assets/ADHDCal_Screenshot.png" alt="ADHDCal screenshot" />
             </div>
             <p class="projectDesc">
               Designed and implemented a custom calendar/notes application in Python using object-oriented programming and
@@ -793,7 +771,6 @@
               <span class="pill">Interactive navigation</span>
               <span class="pill">Clean UX</span>
             </div>
-          
           </article>
 
           <!-- Research -->
@@ -803,17 +780,7 @@
               <div class="meta">LAMMPS • OVITO • MATLAB</div>
             </div>
             <div class="thumb" aria-hidden="true">
-              <img
-                src="data:image/svg+xml;utf8,
-                <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'>
-                  <rect width='100%25' height='100%25' fill='rgba(255,255,255,0.06)'/>
-                  <rect x='70' y='80' width='1460' height='740' rx='36' fill='rgba(255,111,97,0.12)'/>
-                  <text x='50%25' y='50%25' text-anchor='middle' font-family='Inter, Arial' font-size='42' fill='rgba(255,255,255,0.70)'>
-                    add simulation figure
-                  </text>
-                </svg>"
-                alt="Research screenshot placeholder"
-              />
+              <img src="assets/EES_Paper_Screenshot.png" alt="Research screenshot" />
             </div>
             <p class="projectDesc">
               Ran molecular dynamics simulations in LAMMPS, processed large datasets in MATLAB/OVITO, and authored a technical report
@@ -825,7 +792,6 @@
               <span class="pill">Scientific reporting</span>
               <span class="pill">Visualization</span>
             </div>
-            
           </article>
 
           <!-- Artemis -->
@@ -835,17 +801,7 @@
               <div class="meta">Python • Numerical modeling</div>
             </div>
             <div class="thumb" aria-hidden="true">
-              <img
-                src="data:image/svg+xml;utf8,
-                <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'>
-                  <rect width='100%25' height='100%25' fill='rgba(255,255,255,0.06)'/>
-                  <rect x='70' y='80' width='1460' height='740' rx='36' fill='rgba(255,221,87,0.12)'/>
-                  <text x='50%25' y='50%25' text-anchor='middle' font-family='Inter, Arial' font-size='42' fill='rgba(255,255,255,0.70)'>
-                    add animation frame / poster image
-                  </text>
-                </svg>"
-                alt="Artemis simulation screenshot placeholder"
-              />
+              <img src="assets/Artemis_Project_Screenshot.png" alt="Artemis simulation screenshot" />
             </div>
             <p class="projectDesc">
               Built an animated, physics-based simulation of a multi-stage rocket mission (Mars → Phobos), using differential equations
@@ -857,7 +813,6 @@
               <span class="pill">Team collaboration</span>
               <span class="pill">Poster presentation</span>
             </div>
-            
           </article>
         </div>
       </div>
