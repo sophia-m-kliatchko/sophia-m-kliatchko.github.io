@@ -467,6 +467,82 @@
       margin-top: 12px;
     }
 
+    .ai-disclaimer{
+      padding: 18px 0;
+    }
+
+    .ai-box{
+      border-radius: var(--radiusXL);
+      border: 1px solid var(--stroke);
+      background: color-mix(in srgb, var(--card2) 92%, transparent);
+      box-shadow: var(--shadowSoft);
+      padding: 14px 18px;
+    }
+
+    /* Remove default triangle */
+    .ai-box summary{
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-family: var(--display);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .ai-box summary::-webkit-details-marker{
+      display: none;
+    }
+
+    /* Small tag on the right */
+    .ai-tag{
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      border: 1px solid var(--stroke);
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+    }
+
+    /* Content spacing */
+    .ai-content{
+      margin-top: 12px;
+    }
+
+    .ai-content p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .ai-content ul{
+      margin: 0 0 12px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .ai-content li{
+      margin-bottom: 6px;
+    }
+
+    .ai-footer{
+      margin: 0;
+      font-size: 13px;
+      color: var(--faint);
+    }
+
+    /* Subtle open animation */
+    .ai-box[open]{
+      background: color-mix(in srgb, var(--card2) 98%, transparent);
+    }
+
+
     /* Experience timeline */
     .timeline{
       display:grid;
@@ -618,6 +694,38 @@
         </div>
       </div>
     </section>
+
+    <section class="ai-disclaimer" aria-label="AI Use Disclosure">
+      <div class="wrap">
+
+        <details class="ai-box">
+          <summary>
+            AI-Assisted Development Note
+            <span class="ai-tag">Click to expand</span>
+          </summary>
+
+          <div class="ai-content">
+            <p>
+              This portfolio was developed with the support of modern AI tools, including
+              <strong>ChatGPT-5.2</strong> and <strong>Claude Haiku 4.5</strong>, to enhance productivity and iteration.
+            </p>
+
+            <ul>
+              <li>Refining layout, accessibility, and responsive design</li>
+              <li>Improving code clarity, structure, and documentation</li>
+              <li>Accelerating development through debugging and styling suggestions</li>
+            </ul>
+
+            <p class="ai-footer">
+              All content, project work, and final implementation decisions are my own.
+            </p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+
 
     <!-- ABOUT -->
     <section id="about">
