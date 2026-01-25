@@ -7,10 +7,10 @@
   <meta name="description" content="Professional portfolio of code and projects by Sophia M. Kliatchko, a Carnegie Mellon student in applied and computational mathematics focused on quantitative analysis, data analytics, and computational simulations." />
 
   <!--
-    AI usage note (for 15-113 Project 1 documentation):
-    - This file was drafted with assistance to generate a clean layout, accessible components,
-      responsive CSS, and small JS features (dark mode, smooth scrolling, form validation).
-    - You should read/modify the content and structure so you can explain it.
+    AI usage note:
+    -This file was created with the assistance of AI tools, including GitHub Copilot and ChatGPT, in order to create a first draft of the website.
+    -The AI tools were used to generate initial code snippets and structure, which were then reviewed, edited, and refined by the author to ensure accuracy, quality, and alignment with personal style and intent.
+    -All personal details, text and content were written by Sophia Kliatchko (with minor grammar/spelling suggestions from AI).
   -->
 
   <meta property="og:title" content="Sophia M. Kliatchko's Professional Portfolio" />
@@ -334,7 +334,7 @@
       overflow:hidden;
       flex: 0 0 auto;
     }
-    .avatar img{ width:100%; height:100%; object-fit: cover; display:block; }
+    .avatar img{ width:100%; height:100%; object-fit: cover; display:block; object-position: left top; }
     .who{
       display:grid;
       gap: 3px;
@@ -451,7 +451,7 @@
     .thumb img{ 
       width:100%; 
       height:100%; 
-      object-fit: cover; 
+      object-fit: fill; 
       display:block;
       object-position: center top;
     }
@@ -675,7 +675,6 @@
     <section id="skills">
       <div class="wrap">
         <h2 class="sectionTitle">Skills</h2>
-        <p class="sectionSub">A quick overview of tools I’ve used in coursework, research, and projects.</p>
 
         <div class="grid3">
           <div class="card">
@@ -741,8 +740,11 @@
               <img src="assets/Portfolio_Website_Screenshot.png" alt="Portfolio project screenshot" />
             </div>
             <p class="projectDesc">
-              A responsive, employer-focused portfolio with dark mode, smooth scrolling, and a contact form.
-              Designed for readability and quick scanning by recruiters.
+            A responsive, employer-focused portfolio website featuring dark mode, smooth scrolling, and 
+            a contact form, designed for readability and efficient recruiter scanning. AI tools 
+            (Claude Haiku 4.5 and ChatGPT 5.2) were used to assist with development and refinement, 
+            supporting code optimization and design iteration while maintaining full ownership of the 
+            implementation.
             </p>
             <div class="pillRow" aria-label="Portfolio features">
               <span class="pill">Responsive layout</span>
@@ -756,7 +758,7 @@
           <article class="card" aria-label="Project: ADHDCal">
             <div class="projectHeader">
               <h3>ADHDCal — Calendar & Notes App</h3>
-              <div class="meta">Python • OOP • Hash maps</div>
+              <div class="meta">Python (CMU Graphics & CPCS Utils)</div>
             </div>
             <div class="thumb" aria-hidden="true">
               <img src="assets/ADHDCal_Screenshot.png" alt="ADHDCal screenshot" />
@@ -798,7 +800,7 @@
           <article class="card" aria-label="Project: Artemis Mission Simulation">
             <div class="projectHeader">
               <h3>Artemis Mission Simulation</h3>
-              <div class="meta">Python • Numerical modeling</div>
+              <div class="meta">Python (vpython) • Numerical modeling</div>
             </div>
             <div class="thumb" aria-hidden="true">
               <img src="assets/Artemis_Project_Screenshot.png" alt="Artemis simulation screenshot" />
@@ -822,7 +824,6 @@
     <section id="experience">
       <div class="wrap">
         <h2 class="sectionTitle">Experience</h2>
-        <p class="sectionSub">Roles that show how I work: communication, rigor, collaboration, and execution.</p>
 
         <div class="grid2">
           <div class="card">
@@ -831,18 +832,18 @@
               <div class="role" role="listitem">
                 <div class="roleTop">
                   <strong>Teaching Assistant — Differential &amp; Integral Calculus (CMU)</strong>
-                  <span>Jul/Aug 2025 – Present</span>
+                  <span>August 2025 – Present</span>
                 </div>
                 <ul>
-                  <li>Teach weekly recitations and hold office hours; communicate challenging math concepts clearly.</li>
-                  <li>Collaborate with faculty/TAs on course structure and instructional improvements.</li>
+                  <li>Co-design new lecture models, engagement strategies, and recitation structure for an experimental Calculus I curriculum.</li>
+                  <li>Teach weekly recitations and hold office hours; communicate challenging math concepts.</li>
                 </ul>
               </div>
 
               <div class="role" role="listitem">
                 <div class="roleTop">
                   <strong>Engineering Intern — Tietjen &amp; Venegas Consulting Engineers</strong>
-                  <span>May–Jun 2024 (and/or May 2024–Jun 2025 per resume version)</span>
+                  <span>May – June 2024</span>
                 </div>
                 <ul>
                   <li>Performed quantitative analysis for HVAC system design and energy calculations.</li>
@@ -882,6 +883,7 @@
               <span class="pill">Structured problem-solving</span>
               <span class="pill">Reliable execution</span>
               <span class="pill">Team collaboration</span>
+              <span class="pill">Logistics & organization</span>
             </div>
           </div>
         </div>
@@ -900,25 +902,9 @@
           <aside class="panel heroSide" aria-label="Quick info">
             <div class="headshot">
               <div class="avatar">
-                <!-- Replace this with your real headshot file -->
                 <img
-                  src="data:image/svg+xml;utf8,
-                  <svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
-                    <defs>
-                      <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-                        <stop offset='0' stop-color='%234AC8F5' stop-opacity='0.55'/>
-                        <stop offset='0.55' stop-color='%23FF6F61' stop-opacity='0.45'/>
-                        <stop offset='1' stop-color='%23FFDD57' stop-opacity='0.45'/>
-                      </linearGradient>
-                    </defs>
-                    <rect width='100%25' height='100%25' rx='28' fill='url(%23g)'/>
-                    <circle cx='200' cy='155' r='58' fill='rgba(255,255,255,0.55)'/>
-                    <rect x='92' y='232' width='216' height='122' rx='58' fill='rgba(255,255,255,0.45)'/>
-                    <text x='50%25' y='92%25' text-anchor='middle' font-family='Inter, Arial' font-size='22' fill='rgba(15,23,42,0.75)'>
-                      add headshot
-                    </text>
-                  </svg>"
-                  alt="Headshot placeholder"
+                  src="assets/Professional Headshot.png"
+                  alt="Sophia Kliatchko Professional Headshot"
                 />
               </div>
               <div class="who">
